@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Moment for Husnain — Husnain Yaseen</title>
+    <meta
+      name="description"
+      content="A personal interactive birthday experience crafted for Husnain Yaseen."
+    />
+    <meta name="theme-color" content="#07090D" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#experience-main" class="skip-link">Skip to birthday experience</a>
+
+    <!-- Shared Atmospheric Layers -->
+    <div class="ambient-backdrop" aria-hidden="true">
+      <div class="ambient-grid"></div>
+      <div class="ambient-spotlight" data-ambient-spotlight></div>
+      <div class="ambient-vignette"></div>
+      <div class="film-grain"></div>
+    </div>
+
+    <canvas
+      id="ambient-particles"
+      class="particles-canvas"
+      aria-hidden="true"
+    ></canvas>
+    <canvas
+      id="celebration-canvas"
+      class="celebration-canvas"
+      aria-hidden="true"
+    ></canvas>
+
+    <!-- Custom Desktop Pointer (fine pointer only: mint dot + gold ring) -->
+    <div class="custom-cursor" data-custom-cursor aria-hidden="true">
+      <div class="cursor-dot" data-cursor-dot></div>
+      <div class="cursor-ring" data-cursor-ring></div>
+    </div>
+
+    <!-- Top Status Row -->
+    <header class="status-bar" aria-label="Experience status and controls">
+      <div class="status-left mono-label" data-status-left>
+        PERSONAL EXPERIENCE / 001
+      </div>
+      <div class="status-right">
+        <span class="status-pill mono-label" data-status-right>
+          <span class="status-dot" aria-hidden="true"></span>
+          STATUS: READY
+        </span>
+        <button
+          type="button"
+          class="sound-toggle mono-label"
+          data-sound-toggle
+          aria-pressed="false"
+          aria-label="Enable ambient sound"
+        >
+          <span class="sound-bars" aria-hidden="true">
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+          </span>
+          <span class="sound-label" data-sound-label>SOUND: OFF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Six-Scene Experience -->
+    <main id="experience-main" class="experience-root" tabindex="-1">
+      <!-- SCENE 0: SYSTEM BOOT / WELCOME -->
+      <section
+        id="scene-intro"
+        class="scene scene--intro is-active"
+        data-scene="intro"
+        aria-labelledby="welcome-heading"
+        aria-hidden="false"
+      >
+        <div class="scene-inner intro-inner">
+          <div class="terminal-panel" data-terminal-panel>
+            <div class="terminal-header">
+              <span class="terminal-title mono-label">session.boot</span>
+              <button
+                type="button"
+                class="skip-intro-btn mono-label"
+                data-skip-intro
+              >
+                Skip Intro
+              </button>
+            </div>
+            <div class="terminal-body" aria-live="polite">
+              <p class="terminal-line mono-label" data-terminal-line>&gt; initializing a special moment...</p>
+              <p class="terminal-line mono-label" data-terminal-line>&gt; preparing something just for you...</p>
+              <p class="terminal-line mono-label terminal-line--accent" data-terminal-line>&gt; recipient detected: HUSNAIN YASEEN</p>
+              <p class="terminal-line mono-label" data-terminal-line>&gt; all systems ready.<span class="terminal-cursor" aria-hidden="true"></span></p>
+            </div>
+            <div class="terminal-progress-track" aria-hidden="true">
+              <div class="terminal-progress-fill" data-terminal-progress></div>
+            </div>
+          </div>
+
+          <div class="welcome-block" data-welcome-block>
+            <h1 id="welcome-heading" class="welcome-heading" data-welcome-heading>
+              <span class="line-mask">
+                <span class="line-inner" data-welcome-line>Not another ordinary day.</span>
+              </span>
+              <span class="line-mask">
+                <span class="line-inner" data-welcome-line>Something special is loading.</span>
+              </span>
+            </h1>
+
+            <p class="supporting-copy" data-welcome-copy>
+              A little surprise, made just for you.
+            </p>
+
+            <div class="cta-wrap" data-welcome-cta>
+              <button
+                type="button"
+                class="btn btn-mint magnetic-btn"
+                data-start-experience
+                data-magnetic
+              >
+                <span class="btn-sheen" aria-hidden="true"></span>
+                <span class="btn-label mono-label">[ START EXPERIENCE ]</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 1: THE INTERACTIVE CODE WINDOW -->
+      <section
+        id="scene-code"
+        class="scene scene--code"
+        data-scene="code"
+        aria-labelledby="code-scene-heading"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="scene-inner code-inner">
+          <h2 id="code-scene-heading" class="sr-only" data-scene-heading>
+            Interactive Birthday Code Preview
+          </h2>
+
+          <div class="editor-card" data-editor-card>
+            <div class="editor-topbar">
+              <div class="editor-dots" aria-hidden="true">
+                <span class="editor-dot"></span>
+                <span class="editor-dot"></span>
+                <span class="editor-dot"></span>
+              </div>
+              <div class="editor-tab mono-label">birthday.ts</div>
+              <div class="editor-status-wrap">
+                <svg
+                  class="progress-ring"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="progress-ring-bg"
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    fill="none"
+                    stroke-width="1.6"
+                  />
+                  <circle
+                    class="progress-ring-fg"
+                    data-code-ring
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    fill="none"
+                    stroke-width="1.6"
+                  />
+                </svg>
+                <span class="editor-status mono-label" data-code-status>
+                  COMPILING SURPRISE...
+                </span>
+              </div>
+            </div>
+
+            <div class="editor-body" role="region" aria-label="Birthday code snippet">
+              <div class="code-line-highlight" data-code-highlight aria-hidden="true"></div>
+
+              <div class="code-line" data-code-line>
+                <span class="ln">01</span>
+                <code><span class="tk-kw">const</span> <span class="tk-var">recipient</span> <span class="tk-op">=</span> <span class="tk-str">"Husnain Yaseen"</span><span class="tk-punc">;</span></code>
+              </div>
+              <div class="code-line" data-code-line>
+                <span class="ln">02</span>
+                <code>&nbsp;</code>
+              </div>
+              <div class="code-line" data-code-line>
+                <span class="ln">03</span>
+                <code><span class="tk-kw">function</span> <span class="tk-fn">createBirthdayWish</span><span class="tk-punc">(</span><span class="tk-param">name</span><span class="tk-punc">:</span> <span class="tk-type">string</span><span class="tk-punc">) {</span></code>
+              </div>
+              <div class="code-line" data-code-line>
+                <span class="ln">04</span>
+                <code>  <span class="tk-kw">return</span> <span class="tk-str">`A great year ahead, ${<span class="tk-var">name</span>}!`</span><span class="tk-punc">;</span></code>
+              </div>
+              <div class="code-line" data-code-line>
+                <span class="ln">05</span>
+                <code><span class="tk-punc">}</span></code>
+              </div>
+              <div class="code-line" data-code-line>
+                <span class="ln">06</span>
+                <code>&nbsp;</code>
+              </div>
+              <div class="code-line" data-code-line>
+                <span class="ln">07</span>
+                <code><span class="tk-var">console</span><span class="tk-punc">.</span><span class="tk-fn">log</span><span class="tk-punc">(</span><span class="tk-str">"Something special is ready."</span><span class="tk-punc">);</span></code>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-wrap" data-code-cta-wrap>
+            <button
+              type="button"
+              class="btn btn-mint magnetic-btn"
+              data-run-surprise
+              data-magnetic
+              disabled
+            >
+              <span class="btn-sheen" aria-hidden="true"></span>
+              <span class="btn-label mono-label">RUN THE SURPRISE</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 2: THE DIGITAL GIFT -->
+      <section
+        id="scene-gift"
+        class="scene scene--gift"
+        data-scene="gift"
+        aria-labelledby="gift-heading"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="scene-inner gift-inner">
+          <p class="eyebrow mono-label">SCENE 03 · DIGITAL GIFT</p>
+
+          <h2 id="gift-heading" class="gift-heading" data-scene-heading>
+            Every great surprise starts with one click.
+          </h2>
+
+          <div class="gift-stage" data-gift-stage>
+            <div class="gift-aura" data-gift-aura aria-hidden="true"></div>
+            <div class="gift-burst-ring" data-gift-burst-ring aria-hidden="true"></div>
+            <div class="gift-shadow" aria-hidden="true"></div>
+
+            <div class="gift-float" data-gift-float>
+              <div class="gift-tilt" data-gift-tilt>
+                <div
+                  class="gift-box"
+                  data-gift-box
+                  role="img"
+                  aria-label="Matte charcoal gift box with champagne-gold ribbon and subtle mint seam"
+                >
+                  <div class="gift-inner-glow" data-gift-glow aria-hidden="true"></div>
+
+                  <div class="gift-base">
+                    <div class="gift-face gift-face--front">
+                      <span class="ribbon-vertical" data-gift-ribbon></span>
+                      <span class="mint-seam" data-mint-seam></span>
+                    </div>
+                    <div class="gift-face gift-face--back">
+                      <span class="ribbon-vertical" data-gift-ribbon></span>
+                    </div>
+                    <div class="gift-face gift-face--right">
+                      <span class="ribbon-vertical" data-gift-ribbon></span>
+                    </div>
+                    <div class="gift-face gift-face--left">
+                      <span class="ribbon-vertical" data-gift-ribbon></span>
+                    </div>
+                    <div class="gift-face gift-face--bottom"></div>
+                  </div>
+
+                  <div class="gift-lid-pivot" data-gift-lid>
+                    <div class="gift-lid">
+                      <div class="lid-face lid-face--top">
+                        <span class="ribbon-cross ribbon-cross--x" data-gift-ribbon></span>
+                        <span class="ribbon-cross ribbon-cross--y" data-gift-ribbon></span>
+                        <div class="gift-bow" data-gift-bow>
+                          <span class="bow-loop bow-loop--left"></span>
+                          <span class="bow-loop bow-loop--right"></span>
+                          <span class="bow-knot"></span>
+                        </div>
+                      </div>
+                      <div class="lid-face lid-face--front"></div>
+                      <div class="lid-face lid-face--back"></div>
+                      <div class="lid-face lid-face--left"></div>
+                      <div class="lid-face lid-face--right"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-wrap">
+            <button
+              type="button"
+              class="btn btn-mint magnetic-btn"
+              data-open-gift
+              data-magnetic
+            >
+              <span class="btn-sheen" aria-hidden="true"></span>
+              <span class="btn-label mono-label">OPEN THE GIFT</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 3: THE GRAND BIRTHDAY REVEAL -->
+      <section
+        id="scene-reveal"
+        class="scene scene--reveal"
+        data-scene="reveal"
+        aria-labelledby="reveal-name"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="scene-inner reveal-inner">
+          <div class="orbit-ring" data-orbit-ring aria-hidden="true"></div>
+
+          <p class="eyebrow mono-label eyebrow--gold" data-reveal-eyebrow>
+            A NEW CHAPTER BEGINS
+          </p>
+
+          <p class="reveal-greeting" data-birthday-title>
+            <span class="line-mask">
+              <span class="line-inner" data-reveal-greeting-inner>Happy Birthday</span>
+            </span>
+          </p>
+
+          <div class="reveal-name-wrap">
+            <h2
+              id="reveal-name"
+              class="reveal-name"
+              data-recipient-name
+              data-scene-heading
+            >
+              Husnain Yaseen
+            </h2>
+            <svg
+              class="reveal-underline-svg"
+              viewBox="0 0 520 20"
+              fill="none"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                data-underline
+                d="M6 13C140 5 380 5 514 12"
+                stroke="url(#champagne-line)"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <defs>
+                <linearGradient
+                  id="champagne-line"
+                  x1="0"
+                  y1="0"
+                  x2="520"
+                  y2="0"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stop-color="#B8F2D0" stop-opacity="0.55" />
+                  <stop offset="50%" stop-color="#D6B779" stop-opacity="1" />
+                  <stop offset="100%" stop-color="#D6B779" stop-opacity="0.35" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <p class="supporting-copy reveal-supporting" data-reveal-supporting>
+            May this next chapter bring meaningful opportunities, exciting
+            challenges, personal growth and countless moments worth celebrating.
+          </p>
+
+          <div class="reveal-actions" data-reveal-actions>
+            <button
+              type="button"
+              class="btn btn-mint magnetic-btn"
+              data-to-message
+              data-magnetic
+            >
+              <span class="btn-sheen" aria-hidden="true"></span>
+              <span class="btn-label mono-label">CONTINUE</span>
+            </button>
+            <span class="scroll-hint mono-label" aria-hidden="true">
+              SCROLL TO CONTINUE
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 4: A PERSONAL NOTE -->
+      <section
+        id="scene-message"
+        class="scene scene--message"
+        data-scene="message"
+        aria-labelledby="message-heading"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="scene-inner message-inner">
+          <p class="eyebrow mono-label">A PERSONAL NOTE</p>
+          <h2 id="message-heading" class="sr-only" data-scene-heading>
+            A Personal Note for Husnain Yaseen
+          </h2>
+
+          <article class="note-card" data-note-card>
+            <div class="note-quote" aria-hidden="true">&ldquo;</div>
+            <div class="note-gold-rail" data-note-rail aria-hidden="true"></div>
+
+            <div class="note-body">
+              <p class="note-paragraph" data-note-p>
+                Some moments deserve more than a quick message.
+              </p>
+              <p class="note-paragraph" data-note-p>
+                Today is a reminder to pause, celebrate how far you've come,
+                and look forward to everything still waiting ahead.
+              </p>
+              <p class="note-paragraph" data-note-p>
+                May the coming year bring you happiness, good health, fresh
+                ideas, meaningful progress and the confidence to turn your goals
+                into reality.
+              </p>
+              <p class="note-paragraph" data-note-p>
+                Keep building, keep growing, and keep making great things
+                happen.
+              </p>
+              <p class="note-closing">
+                <strong data-note-final>Have an amazing birthday, Husnain!</strong><span class="note-caret" aria-hidden="true"></span>
+              </p>
+            </div>
+
+            <div class="note-controls">
+              <button type="button" class="btn-text mono-label" data-replay-note>
+                READ AGAIN
+              </button>
+              <button
+                type="button"
+                class="btn btn-mint magnetic-btn"
+                data-to-final
+                data-magnetic
+              >
+                <span class="btn-sheen" aria-hidden="true"></span>
+                <span class="btn-label mono-label">CONTINUE</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SCENE 5: MAKE A WISH / FINAL MOMENT -->
+      <section
+        id="scene-final"
+        class="scene scene--final"
+        data-scene="final"
+        aria-labelledby="final-heading"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="scene-inner final-inner">
+          <p class="eyebrow mono-label">FINAL EVENT: YOUR WISH</p>
+          <p class="final-preface" data-final-preface>One last thing...</p>
+          <h2 id="final-heading" class="final-heading" data-scene-heading>
+            Make a wish.
+          </h2>
+
+          <div class="cake-stage" data-cake-stage>
+            <div class="cake-wish-pulse" data-wish-pulse aria-hidden="true"></div>
+            <div class="cake-wind-swish" data-wind-swish aria-hidden="true"></div>
+            <div class="cake-ambient-glow" data-cake-glow aria-hidden="true"></div>
+
+            <div
+              class="cake"
+              role="img"
+              aria-label="Minimal ivory birthday cake with champagne-gold trim and three lit gold candles"
+            >
+              <div class="candles-row">
+                <div class="candle">
+                  <span class="flame-halo" data-flame-halo></span>
+                  <span class="flame" data-candle-flame>
+                    <span class="flame-core"></span>
+                  </span>
+                  <span class="smoke-wisp" data-smoke-wisp></span>
+                  <span class="wick"></span>
+                  <span class="candle-stick"></span>
+                </div>
+                <div class="candle candle--center">
+                  <span class="flame-halo" data-flame-halo></span>
+                  <span class="flame" data-candle-flame>
+                    <span class="flame-core"></span>
+                  </span>
+                  <span class="smoke-wisp" data-smoke-wisp></span>
+                  <span class="wick"></span>
+                  <span class="candle-stick"></span>
+                </div>
+                <div class="candle">
+                  <span class="flame-halo" data-flame-halo></span>
+                  <span class="flame" data-candle-flame>
+                    <span class="flame-core"></span>
+                  </span>
+                  <span class="smoke-wisp" data-smoke-wisp></span>
+                  <span class="wick"></span>
+                  <span class="candle-stick"></span>
+                </div>
+              </div>
+
+              <div class="cake-tier cake-tier--top">
+                <div class="cake-frosting"></div>
+                <div class="cake-gold-band"></div>
+              </div>
+              <div class="cake-tier cake-tier--bottom">
+                <div class="cake-frosting"></div>
+                <div class="cake-gold-band"></div>
+              </div>
+
+              <div class="cake-stand">
+                <div class="cake-plate"></div>
+                <div class="cake-pedestal"></div>
+                <div class="cake-foot"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-wrap" data-blow-wrap>
+            <button
+              type="button"
+              class="btn btn-mint magnetic-btn"
+              data-blow-candles
+              data-magnetic
+            >
+              <span class="btn-sheen" aria-hidden="true"></span>
+              <span class="btn-label mono-label">BLOW OUT THE CANDLES</span>
+            </button>
+          </div>
+
+          <div class="finale-message" data-finale-message hidden aria-hidden="true">
+            <p class="finale-wish">Here's to a year full of possibilities.</p>
+            <p class="finale-signature">Made with care, just for you.</p>
+
+            <div class="finale-actions">
+              <button
+                type="button"
+                class="btn btn-mint magnetic-btn"
+                data-replay-experience
+                data-magnetic
+              >
+                <span class="btn-sheen" aria-hidden="true"></span>
+                <span class="btn-label mono-label">REPLAY EXPERIENCE</span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-subtle mono-label"
+                data-copy-link
+              >
+                COPY LINK
+              </button>
+            </div>
+            <p
+              class="share-feedback mono-label"
+              data-share-feedback
+              role="status"
+              aria-live="polite"
+            ></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Progress Bar & Scene Indicator -->
+    <nav class="progress-shell" aria-label="Experience progress">
+      <div class="progress-track">
+        <div class="progress-fill" data-progress></div>
+      </div>
+      <div class="progress-meta">
+        <span class="progress-status mono-label" data-scene-label aria-live="polite">
+          SCENE 01 / 06
+        </span>
+        <div class="progress-dots" role="tablist" aria-label="Scenes">
+          <button
+            type="button"
+            class="progress-dot is-active"
+            data-scene-dot="intro"
+            aria-label="Scene 01: System Boot"
+            aria-current="step"
+          ></button>
+          <button
+            type="button"
+            class="progress-dot"
+            data-scene-dot="code"
+            aria-label="Scene 02: Code Window"
+          ></button>
+          <button
+            type="button"
+            class="progress-dot"
+            data-scene-dot="gift"
+            aria-label="Scene 03: Digital Gift"
+          ></button>
+          <button
+            type="button"
+            class="progress-dot"
+            data-scene-dot="reveal"
+            aria-label="Scene 04: Birthday Reveal"
+          ></button>
+          <button
+            type="button"
+            class="progress-dot"
+            data-scene-dot="message"
+            aria-label="Scene 05: Personal Note"
+          ></button>
+          <button
+            type="button"
+            class="progress-dot"
+            data-scene-dot="final"
+            aria-label="Scene 06: Make a Wish"
+          ></button>
+        </div>
+      </div>
+    </nav>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

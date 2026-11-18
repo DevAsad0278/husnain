@@ -1,0 +1,250 @@
+/* ==========================================================================
+   LARGE & ULTRA-WIDE DESKTOP (>= 1440px)
+   ========================================================================== */
+@media (min-width: 1440px) {
+  .scene-inner {
+    max-width: 900px;
+  }
+
+  .reveal-inner {
+    max-width: 1020px;
+  }
+}
+
+/* ==========================================================================
+   LAPTOP & TABLET (<= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .scene {
+    padding: 5.25rem var(--gutter) 5.75rem;
+  }
+
+  .ambient-spotlight {
+    width: min(88vw, 620px);
+    height: min(88vw, 620px);
+    filter: blur(34px);
+  }
+}
+
+/* ==========================================================================
+   TABLET PORTRAIT (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .status-bar {
+    padding: 0.95rem 1.25rem;
+  }
+
+  .status-pill {
+    display: none;
+  }
+
+  .editor-topbar {
+    padding: 0.7rem 0.9rem;
+    gap: 0.5rem;
+  }
+
+  .editor-body {
+    padding: 1.2rem 1rem;
+    font-size: 0.78rem;
+  }
+
+  .note-card {
+    padding: 2rem 1.45rem 2.2rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE (<= 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .status-bar {
+    padding: max(0.8rem, env(safe-area-inset-top)) 1rem 0.8rem;
+  }
+
+  .status-left {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+
+  .sound-toggle {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.6rem;
+    min-height: 44px;
+  }
+
+  .scene {
+    padding: 4.85rem 1rem max(5.5rem, calc(4.8rem + env(safe-area-inset-bottom)));
+    overflow-x: hidden;
+  }
+
+  .ambient-spotlight {
+    width: 110vw;
+    height: 110vw;
+    filter: blur(26px);
+  }
+
+  .terminal-panel {
+    margin-bottom: 1.75rem;
+  }
+
+  .terminal-body {
+    padding: 0.9rem 0.95rem;
+    min-height: 108px;
+  }
+
+  .terminal-line {
+    font-size: 0.7rem;
+    overflow-wrap: anywhere;
+  }
+
+  .editor-topbar {
+    flex-wrap: wrap;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .editor-status {
+    font-size: 0.58rem;
+  }
+
+  .editor-body {
+    padding: 1rem 0.8rem;
+    font-size: 0.68rem;
+    line-height: 1.7;
+  }
+
+  .code-line {
+    gap: 0.6rem;
+  }
+
+  .gift-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .gift-stage,
+  .cake-stage {
+    transform: scale(0.88);
+    margin-bottom: 0;
+  }
+
+  .reveal-name {
+    font-size: clamp(2.35rem, 11vw, 3.6rem);
+  }
+
+  .orbit-ring {
+    width: 82vw;
+    height: 82vw;
+  }
+
+  .note-card {
+    padding: 1.7rem 1.15rem 1.85rem;
+  }
+
+  .note-gold-rail {
+    left: 0.8rem;
+  }
+
+  .note-body,
+  .note-controls {
+    padding-left: 0.8rem;
+  }
+
+  .note-controls {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 310px;
+    min-height: 48px;
+    padding: 0.8rem 1.35rem;
+    font-size: 0.7rem;
+  }
+
+  .finale-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .progress-shell {
+    padding: 0.7rem 1rem max(0.85rem, env(safe-area-inset-bottom));
+  }
+
+  .progress-status {
+    font-size: 0.58rem;
+  }
+
+  .progress-dots {
+    gap: 0.42rem;
+  }
+}
+
+/* ==========================================================================
+   SMALL MOBILE (<= 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .welcome-heading {
+    font-size: 1.85rem;
+  }
+
+  .editor-dots {
+    display: none;
+  }
+
+  .editor-body {
+    font-size: 0.61rem;
+    padding: 0.9rem 0.65rem;
+  }
+
+  .gift-stage,
+  .cake-stage {
+    transform: scale(0.78);
+  }
+
+  .reveal-name {
+    font-size: 2.15rem;
+  }
+
+  .final-heading {
+    font-size: 1.9rem;
+    margin-bottom: 1.1rem;
+  }
+}
+
+/* ==========================================================================
+   SHORT / LANDSCAPE VIEWPORTS (max-height: 640px)
+   ========================================================================== */
+@media (max-height: 640px) and (orientation: landscape) {
+  .scene {
+    padding-top: 4.2rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .terminal-panel {
+    margin-bottom: 1.25rem;
+  }
+
+  .gift-heading,
+  .final-heading {
+    margin-bottom: 0.9rem;
+  }
+
+  .gift-stage,
+  .cake-stage {
+    height: 185px;
+    transform: scale(0.78);
+  }
+
+  .cta-wrap {
+    margin-top: 1.15rem;
+  }
+}
+
+/* ==========================================================================
+   TOUCH / COARSE POINTER DEVICES
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}

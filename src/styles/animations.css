@@ -1,0 +1,130 @@
+@keyframes cursorBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor,
+.note-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  vertical-align: -0.18em;
+  margin-left: 5px;
+  background: var(--mint);
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes soundBarPulse {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 11px;
+  }
+}
+
+.sound-toggle[aria-pressed="true"] .sound-bar:nth-child(1) {
+  animation: soundBarPulse 0.9s ease-in-out infinite;
+}
+
+.sound-toggle[aria-pressed="true"] .sound-bar:nth-child(2) {
+  animation: soundBarPulse 0.9s ease-in-out 0.2s infinite;
+}
+
+.sound-toggle[aria-pressed="true"] .sound-bar:nth-child(3) {
+  animation: soundBarPulse 0.9s ease-in-out 0.4s infinite;
+}
+
+@keyframes giftIdleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.gift-float.is-idle {
+  animation: giftIdleFloat 4.8s ease-in-out infinite;
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.orbit-ring {
+  animation: orbitSpin 28s linear infinite;
+}
+
+@keyframes flameFlicker {
+  0%,
+  100% {
+    transform: translateX(-50%) scaleY(1) scaleX(1) rotate(-1.5deg);
+    opacity: 0.96;
+  }
+  25% {
+    transform: translateX(-50%) scaleY(1.08) scaleX(0.94) rotate(1.5deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) scaleY(0.94) scaleX(1.04) rotate(-0.8deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateX(-50%) scaleY(1.05) scaleX(0.97) rotate(1.8deg);
+    opacity: 1;
+  }
+}
+
+.flame.is-lit {
+  animation: flameFlicker 1.35s ease-in-out infinite;
+}
+
+.candle--center .flame.is-lit {
+  animation-delay: 0.28s;
+}
+
+.candle:last-child .flame.is-lit {
+  animation-delay: 0.55s;
+}
+
+@keyframes haloPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.16);
+    opacity: 0.85;
+  }
+}
+
+.flame-halo.is-lit {
+  animation: haloPulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor,
+  .note-caret,
+  .gift-float.is-idle,
+  .orbit-ring,
+  .flame.is-lit,
+  .flame-halo.is-lit,
+  .sound-toggle[aria-pressed="true"] .sound-bar {
+    animation: none !important;
+  }
+}
